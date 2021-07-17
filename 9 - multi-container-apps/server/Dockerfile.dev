@@ -1,0 +1,14 @@
+FROM node:14.14.0-alpine
+
+WORKDIR /app
+
+COPY ./package.json ./
+
+RUN npm install
+
+# Even with volumes, this is useful so that the container can run as a standalone
+COPY . .
+
+EXPOSE 5000
+
+CMD ["npm", "run", "dev"]

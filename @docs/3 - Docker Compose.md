@@ -36,20 +36,30 @@ Ensuring containers are always available in case something goes wrong
 version: '3'
 
 services:
-    redis-server:
-        image: 'redis'
-    node-app:
-        restart: always
-        build: .
-        ports: 
-            - "8080:8081"
-    web:
-        image: 'some-image'
-        
-        # Necessary if there's is no default Docker file
-        build: 
-            context: .
-            dockerfile: 'Dockerfile.dev'
+    services:
+        postgres:
+            image: postgres:latest
+            environment: 
+                #environment variable example
+                - POSTGRES_PASSWORD=postgres_password 
+        redis-server:
+            image: 'redis'
+        node-app:
+            restart: always
+            # Helps enforce startup order
+            depends_on: 
+                - postgres
+                - redis-server
+            build: .
+            ports: 
+                - "8080:8081"
+        web:
+            image: 'some-image'
+            
+            # Necessary if there's is no default Docker file
+            build: 
+                context: .
+                dockerfile: 'Dockerfile.dev'
 
 
 ```

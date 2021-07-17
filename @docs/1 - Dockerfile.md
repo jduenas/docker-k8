@@ -41,12 +41,9 @@ docker run -p 3000:3000 -v /app/node_module -v "$(pwd):/app" <image>
 docker run -p <public-port>:<container-port> image
 ```
 
-## Exposing Ports
+# Environment Variables
 ```
-# Helps with documentation on what ports are mappable
-EXPOSE <port number>
-EXPOSE <port number>/tcp
-EXPOSE <port number>/udp
+docker run -e MYVAR1 --env MYVAR2=foo --env-file ./env.list <image>
 ```
 
 ## Multi-Step Docker Builds
@@ -63,9 +60,14 @@ RUN npm run build
 FROM nginx:latest
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/build .
+```
 
-
-
+## Exposing Ports
+```
+# Helps with documentation on what ports are mappable
+EXPOSE <port number>
+EXPOSE <port number>/tcp
+EXPOSE <port number>/udp
 ```
 
 ## Rebuilds with Cache in Docker file
