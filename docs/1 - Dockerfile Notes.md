@@ -17,6 +17,13 @@ FROM node:alpine
 WORKDIR /usr/app
 ```
 
+## Copying Files
+```
+FROM node: alpine
+# COPY <local directory> <remote location>
+COPY ./ ./
+```
+
 ## Docker Run
 
 ```
@@ -24,10 +31,17 @@ WORKDIR /usr/app
 docker run -p <public-port>:<container-port> image
 ```
 
+## Exposing Ports
+```
+EXPOSE <port number>
+EXPOSE <port number>/tcp
+EXPOSE <port number>/udp
+```
+
 ## Rebuilds with Cache in Docker file
 
 - Images are immutable
-- A change to the dockerfile will create a new container and take an image snapshot from the container executed with the instruction
+- A change to the Dockerfile will create a new image and take an image snapshot from the image executed with the instruction
 - If prior instructions are identical, it will use the cached image version of the prior instructions
 
 e.g.
