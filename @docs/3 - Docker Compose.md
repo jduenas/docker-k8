@@ -43,5 +43,14 @@ services:
         build: .
         ports: 
             - "8080:8081"
+    web:
+        image: 'some-image'
+        
+        # Necessary if there's is no default Docker file
+        build: 
+            context: .
+            dockerfile: 'Dockerfile.dev'
+
+
 ```
 

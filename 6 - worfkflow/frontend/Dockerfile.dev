@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+WORKDIR /usr/app
+
+COPY ./package.json ./
+
+RUN npm install
+
+# Even with volumes, this is useful so that the container can run as a standalone
+COPY . .
+
+CMD ["npm", "run", "start"]

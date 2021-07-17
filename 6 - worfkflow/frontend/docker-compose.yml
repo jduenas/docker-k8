@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    cra-web:
+        build: 
+            context: .
+            dockerfile: 'Dockerfile.dev'
+        image: 'cra-web'
+        ports:
+            - "3000:3000"
+        volumes:            
+            - /usr/app/node_modules # Bookmarked volume
+            - .:/usr/app
+    tests:
+        build: 
+            context: .
+            dockerfile: 'Dockerfile.dev'
+        image: 'cra-web'        
+        command: ['npm', 'run', 'test'] # command overides
+        volumes:            
+            - /usr/app/node_modules # Bookmarked volume
+            - .:/usr/app
