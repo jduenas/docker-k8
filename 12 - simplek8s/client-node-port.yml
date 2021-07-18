@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    # Port that another Pod or another container within the Pod can use to connect to the target port
+    - port: 3050
+      targetPort: 3000
+      # Port accessible by the outside world.  Randomly assigned if not specified.
+      nodePort: 31515
+  # Determines which Pod to apply to.  Component is the metadata of another configuration.
+  selector:
+    component: web

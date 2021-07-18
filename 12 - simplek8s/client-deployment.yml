@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  # Used to get a handle to the pod it needs Master to manage
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels: # labels applied to all pods created for this deployment
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000

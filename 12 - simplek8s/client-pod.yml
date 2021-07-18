@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client-pod
+  labels:
+    # Allows this to be discoverable by the Label selector system.
+    # Can be any keyword.
+    component: web
+spec:
+  containers:    
+      # referenceable name for networking or other containers within the pod
+    - name: client 
+      image: stephengrider/multi-client
+      ports:
+        # Port exposed to the outside world
+        - containerPort: 3000
