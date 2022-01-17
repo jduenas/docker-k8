@@ -47,3 +47,8 @@
 
 ## kubectl
 * Use for managing the containers in the node by interacting with Master
+
+# Docker Compose vs Kubernetes #
+* Kubernetes expects all images to be built
+* One config file per object we want to create
+* Have to manually set up all networking
