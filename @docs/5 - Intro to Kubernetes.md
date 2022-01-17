@@ -5,6 +5,8 @@
 * Networking has to be manually set up
 * Config files are used to create Kubernetes objects
 
+![](2022-01-17-20-52-44.png)
+
 # Kubernetes Objects #
 * apiVersions determine what object types you can access.    
 * v1

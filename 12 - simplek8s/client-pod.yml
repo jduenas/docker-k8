@@ -8,9 +8,10 @@ metadata:
     component: web
 spec:
   containers:    
-      # referenceable name for networking or other containers within the pod
+      # Referenceable name for networking to other containers within the pod
+      # or to get more information for the running container within the pod (e.g. logging)
     - name: client 
       image: stephengrider/multi-client
       ports:
-        # Port exposed to the outside world
+        # Nginx port of the image exposed to the outside world
         - containerPort: 3000

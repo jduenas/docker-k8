@@ -21,7 +21,7 @@ kubectl get services
 kubectl get deployments
 ```
 
-# Describe
+# Describe / Get Commands
 ```
 kubectl describe pod <pod-name>
 ```
